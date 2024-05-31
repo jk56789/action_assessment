@@ -219,11 +219,11 @@ def OkS_text(image, score_list):
 def OkS_text_base(image, score_list):
 
     text_position = {
-            "23": (1200, 600), #
+            "23": (10, 10), #
             "24": (20,10),
-            "27": (1300, 950), #
+            "27": (10, 10), #
             "28": (40,10),
-            "25": (1400, 800), #
+            "25": (0, 800), #
             "26": (60,10),
             "11": (1200, 230), #
             "12": (80,10),
@@ -245,7 +245,7 @@ def OkS_text_base(image, score_list):
         score = score_list[int(key)]
         color = (0, 0, 0) 
 
-        if 0 <= score <= 0.01:
+        '''if 0 <= score <= 0.01:
             color =(0, 0, 255)  
         elif 0.02 <= score <= 0.25:
             color = (0, 0, 255) # Red
@@ -254,5 +254,108 @@ def OkS_text_base(image, score_list):
         elif 0.51 <= score <= 0.75:
             color = (128, 128, 128)   # Yellow
         elif 0.76 <= score <= 1.00:
+            color = (0, 0, 0)    # Black'''
+            
+        if 0 <= score <= 0.01:
+            color =(0, 0, 0)  
+        elif 0.02 <= score <= 0.25:
+            color = (0, 0, 0)  # Red
+        elif 0.26 <= score <= 0.50:
+            color = (0, 0, 0)   # Orange
+        elif 0.51 <= score <= 0.75:
+            color = (0, 0, 0)    # Yellow
+        elif 0.76 <= score <= 1.00:
             color = (0, 0, 0)    # Black
         cv2.putText(image, f' {score:.4f}', position, cv2.FONT_ITALIC, 1.3, color, 3)
+        
+        
+def OkS_text_base2(image, score_list):
+    text_position = {
+        
+        "23": (420, 200),
+        "24": (90, 200),
+
+
+        "27": (460, 350),
+        "28": (60, 350),
+        
+        "25": (420, 260),
+        "26": (90, 260),
+        
+        "11": (400, 100),
+        "12": (90, 100),
+        
+        "13": (400, 140),
+        "14": (110, 140),
+        
+        "15": (500, 130),
+        "16": (10, 130),
+        
+        
+        "7": (0, 0),
+        "8": (0, 0),
+        "0": (0, 0),
+        "2": (0, 0),
+        "5": (0, 0),
+    }
+
+    for key, position in text_position.items():
+        score = score_list[int(key)]
+        if 0 <= score <= 0.01:
+            color = (0, 0, 255)  # Red
+        elif 0.02 <= score <= 0.25:
+            color = (0, 255, 0)  # Orange
+        elif 0.26 <= score <= 0.50:
+            color = (255, 255, 0)  # Yellow
+        elif 0.51 <= score <= 0.75:
+            color = (255, 165, 0)  # Green
+        elif 0.76 <= score <= 1.00:
+            color = (255, 0, 0)  # Blue
+        else:
+            color = (128, 128, 128)  # Grey for unexpected values
+        cv2.putText(image, f' {score:.3f}', position, cv2.FONT_ITALIC, 1, color, 2)
+        
+        
+def OkS_text_base3(image, score_list):
+    text_position = {
+        
+        "23": (420, 200),
+        "24": (90, 200),
+
+
+        "27": (460, 350),
+        "28": (60, 350),
+        
+        "25": (420, 260),
+        "26": (90, 260),
+        
+        "11": (400, 100),
+        "12": (90, 100),
+        
+        "13": (400, 140),
+        "14": (110, 140),
+        
+        "15": (500, 130),
+        "16": (10, 130),
+        
+        
+        "7": (0, 0),
+        "8": (0, 0),
+        "0": (0, 0),
+        "2": (0, 0),
+        "5": (0, 0),
+    }
+
+    for key, position in text_position.items():
+        score = score_list[int(key)]
+        if 0 <= score <= 0.01:
+            color = (0, 0, 255)# Red
+        elif 0.01 <= score <= 0.33:
+            color = (0, 0, 255)  # Green
+        elif 0.34 <= score <= 0.66:
+            color = (0, 255, 0)   # Blue
+        elif 0.67 <= score <= 1.00:
+            color = (255, 0, 0)  # Grey for unexpected values
+        else:
+            color = (128, 128, 128)  # Grey for unexpected values
+        cv2.putText(image, f' {score:.3f}', position, cv2.FONT_ITALIC, 1, color, 2)
